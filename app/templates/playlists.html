@@ -1,0 +1,12 @@
+<ion-view view-title="Current Weather">
+  <ion-content>
+    Current Temperature: {{weather.currently.temperature | number:0}}
+    <weather-icon icon="weather.currently.icon"></weather-icon>
+    <h2>Hourly</h2>
+    <div ng-repeat="hour in weather.hourly.data | limitTo:12">
+    	{{hour.time * 1000 | date:'ha'}}
+    	{{hour.summary}}
+    	{{hour.temperature | number:0}}
+    </div>
+  </ion-content>
+</ion-view>
