@@ -1,18 +1,92 @@
-.icon {
-	font-size: 50vmin;
+.temp {
+	float: right;
+	font-size: 36px;
+	text-align: right;
+}
+
+.temp-small {
+	font-size: 24px;
+	max-width: 50px;
+}
+
+.right-now {
+	font-size: 18px;
+	margin-top: 0;
+}
+
+weather-icon {
+	float: left;
+	width: 50px;
+}
+
+.icon-large {
+	display: block;
+	font-size: 75px;
+	line-height: 0.5;
+	margin-right: 15px;
+}
+
+.clear-day:before,
+.clear-night:before,
+.partly-cloudy-day:before,
+.partly-cloudy-night:before,
+.fog:before,
+.rain:before {
+	display: block;
+	font-family: "Ionicons";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-rendering: auto;
+	line-height: 0.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .clear-day:before {
 	content: "\f4b7";
-	display: inline-block;
-font-family: "Ionicons";
-speak: none;
-font-style: normal;
-font-weight: normal;
-font-variant: normal;
-text-transform: none;
-text-rendering: auto;
-line-height: 1;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+	font-size: 55px;
+}
+
+.clear-night:before {
+	content: "\f468";
+}
+
+.partly-cloudy-day:before {
+	content: "\f476";
+	font-size: 50px;
+}
+
+.partly-cloudy-night:before {
+	content: "\f40e";
+	font-size: 50px;
+}
+
+.fog:before {
+	content: "\f306";
+	font-size: 40px;
+}
+
+.rain:before {
+	content: "\f495";
+	font-size: 55px;
+}
+
+.scroll-refresher {
+	top: -80px;
+}
+
+.forecast-wrap {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.forecast-wrap h3 {
+	margin-bottom: 0;
+}
+
+.forecast-wrap + .card {
+	margin-top: 15px;
 }

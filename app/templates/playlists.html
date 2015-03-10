@@ -1,12 +1,35 @@
 <ion-view view-title="Current Weather">
   <ion-content>
-    Current Temperature: {{weather.currently.temperature | number:0}}
-    <weather-icon icon="weather.currently.icon"></weather-icon>
-    <h2>Hourly</h2>
-    <div ng-repeat="hour in weather.hourly.data | limitTo:12">
-    	{{hour.time * 1000 | date:'ha'}}
-    	{{hour.summary}}
-    	{{hour.temperature | number:0}}
-    </div>
+    <ion-refresher
+    	pulling-text="Pull to refresh..."
+    	on-refresh="getCurrentWeather()">
+  	</ion-refresher>
+  	<div class="card padding">
+    	<weather-icon icon="weather.currently.icon"></weather-icon>
+    	<div class="temp">{{weather.currently.temperature | number:0}}&deg;</div>
+    	<div class="right-now">Right Now</div>
+    	{{weather.currently.summary}}
+  	</div>
+
+	<div class="padding forecast-wrap">
+		<h3>Forecast</h3>
+	</div>
+	
+  	<div class="card padding" ng-repeat="day in weather.daily.data">
+  		<weather-icon icon="day.icon"></weather-icon>
+		<div class="temp temp-small">{{day.temperatureMin | number:0}}&deg; {{day.temperatureMax | number:0}}&deg;</div>
+  		<div class="right-now">{{day.time * 1000 | date:'EEEE'}}</div>
+		{{day.summary}}
+  	</div>
+
+  	<!--
+  	<ion-list>
+    	<ion-item ng-repeat="hour in weather.hourly.data | limitTo:12">
+    		{{hour.time * 1000 | date:'h a'}}
+    		{{hour.summary}}
+    		{{hour.temperature | number:0}}&deg;
+    	</ion-item>
+    </ion-list>
+    -->
   </ion-content>
 </ion-view>
