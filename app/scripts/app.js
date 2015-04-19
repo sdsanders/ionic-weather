@@ -47,12 +47,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.currently', {
+      url: "/currently",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/currently.html",
+          controller: 'CurrentlyCtrl'
         }
       }
     })
@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/currently');
 
   $httpProvider.interceptors.push(function($rootScope) {
     return {

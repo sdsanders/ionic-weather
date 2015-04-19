@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
   $scope.getCurrentWeather();
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('CurrentlyCtrl', function($scope) {
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
