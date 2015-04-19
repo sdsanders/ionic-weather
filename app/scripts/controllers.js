@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, Weather) {
+
+})
+
+.controller('CurrentlyCtrl', function($scope, Weather) {
   $scope.getCurrentWeather = function() {
     var onSuccess = function(position) {
       $scope.position = position;
@@ -27,12 +31,6 @@ angular.module('starter.controllers', [])
   }
 
   $scope.getCurrentWeather();
-})
-
-.controller('CurrentlyCtrl', function($scope) {
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
 .directive('weatherIcon', function(){
