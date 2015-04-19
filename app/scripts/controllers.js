@@ -33,6 +33,10 @@ angular.module('starter.controllers', [])
   $scope.getCurrentWeather();
 })
 
+.controller('ForecastCtrl', function($scope, $stateParams) {
+  $scope.time = $stateParams.time;
+})
+
 .directive('weatherIcon', function(){
   return {
     restrict: 'E',

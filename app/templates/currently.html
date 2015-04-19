@@ -16,11 +16,11 @@
   		<h3>Forecast</h3>
   	</div>
 
-    <div class="card padding" ng-repeat="day in weather.daily.data">
+    <a class="card padding" ng-repeat="day in weather.daily.data" ng-href="#/app/forecast/{{day.time}}">
     	<weather-icon icon="day.icon"></weather-icon>
   		<div class="temp temp-small">{{day.temperatureMin | number:0}}&deg; {{day.temperatureMax | number:0}}&deg;</div>
     	<div class="right-now">{{day.time * 1000 | date:'EEEE'}}</div>
   		{{day.summary}}
-    </div>
+    </a>
   </ion-content>
 </ion-view>

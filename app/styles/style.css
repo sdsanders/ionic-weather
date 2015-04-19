@@ -90,3 +90,9 @@ weather-icon {
 .forecast-wrap + .card {
 	margin-top: 15px;
 }
+
+.card {
+	color: inherit;
+	display: block;
+	text-decoration: none;
+}

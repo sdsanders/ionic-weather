@@ -38,8 +38,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
         controller: 'CurrentlyCtrl'
       }
     }
+  })
+
+  .state('app.forecast', {
+    url: "/forecast/:time",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/forecast.html",
+        controller: 'ForecastCtrl'
+      }
+    }
   });
-  
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/currently');
 
