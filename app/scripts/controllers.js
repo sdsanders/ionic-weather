@@ -11,8 +11,7 @@ angular.module('starter.controllers', [])
 
       $scope.weather = Weather.get(
         {
-          latitude: $scope.position.coords.latitude,
-          longitude: $scope.position.coords.longitude
+          args : $scope.position.coords.latitude + ',' + $scope.position.coords.longitude
         }
         , function() {
         console.log($scope.weather);
@@ -33,8 +32,34 @@ angular.module('starter.controllers', [])
   $scope.getCurrentWeather();
 })
 
-.controller('ForecastCtrl', function($scope, $stateParams) {
+.controller('ForecastCtrl', function($scope, $stateParams, Weather) {
   $scope.time = $stateParams.time;
+  
+  $scope.getForecast = function() {
+    var onSuccess = function(position) {
+      $scope.position = position;
+
+      $scope.weather = Weather.get(
+        {
+          args : $scope.position.coords.latitude + ',' + $scope.position.coords.longitude + ',' + $scope.time
+        }
+        , function() {
+        console.log($scope.weather);
+        $scope.$broadcast('scroll.refreshComplete');
+      }); // get() returns a single entry
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
+  
+  $scope.getForecast();
 })
 
 .directive('weatherIcon', function(){
@@ -53,5 +78,7 @@ angular.module('starter.controllers', [])
 })
 
 .factory('Weather', function($resource) {
-  return $resource('https://api.forecast.io/forecast/8e3469ed24e6e038711f6706299bf8ce/:latitude,:longitude');
+  var baseURL = 'https://api.forecast.io/forecast/8e3469ed24e6e038711f6706299bf8ce/';
+
+  return $resource(baseURL + ':args');
 });
