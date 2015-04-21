@@ -1,5 +1,21 @@
 <ion-view view-title="Forecast for {{time * 1000 | date:'EEEE'}}">
   <ion-content>
-
+  	<div class="card padding">
+    	<weather-icon icon=""></weather-icon>
+    	<div class="temp temp-small">{{weather.daily.data[0].temperatureMin | number:0}}&deg; {{weather.daily.data[0].temperatureMax | number:0}}&deg;</div>
+    	<div class="right-now">{{time * 1000 | date:'EEEE'}}</div>
+      {{weather.daily.data[0].summary}}
+  	</div>
+    
+  	<div class="padding forecast-wrap">
+  		<h3>Hourly Forecast</h3>
+  	</div>
+    
+    <a class="card padding" ng-repeat="hour in weather.hourly.data">
+    	<weather-icon icon="day.icon"></weather-icon>
+  		<div class="temp temp-small">{{hour.temperature | number:0}}&deg;</div>
+    	<div class="right-now">{{hour.time * 1000 | date:'ha'}}</div>
+  		{{hour.summary}}
+    </a>
   </ion-content>
 </ion-view>
